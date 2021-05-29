@@ -1,0 +1,9 @@
+---
+before_install:
+  - "docker build -t docker-grider-frontend -f Dockerfile.dev ."
+language: generic
+script:
+  - "docker run -e CI=true docker-grider-frontend npm run test -- --coverage"
+services:
+  - docker
+sudo: required
